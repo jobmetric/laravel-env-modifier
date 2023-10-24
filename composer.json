@@ -1,0 +1,60 @@
+{
+    "name": "jobmetric/env-modifier",
+    "description": "This is a package for env modification the contents of different Laravel projects.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "jobmetric",
+        "package",
+        "env",
+        "env file",
+        "env modifier"
+    ],
+    "homepage": "https://doc.jobmetric.net/package/env-modifier",
+    "authors": [
+        {
+            "name": "Majid Mohammadian",
+            "email": "majeedmohammadian@gmail.com",
+            "homepage": "https://www.linkedin.com/in/majidmohammadian/",
+            "role": "Full Stack Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.1",
+        "ext-json": "*",
+        "laravel/framework": ">=9.19"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "JobMetric\\EnvModifier\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JobMetric\\EnvModifier\\EnvModifierServiceProvider"
+            ],
+            "aliases": {
+                "JEnvModifier": "JobMetric\\EnvModifier\\Facades\\JEnvModifier"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "support": {
+        "issues": "https://github.com/jobmetric/env-modifier/issues",
+        "forum": "https://twitter.com/jobmetric",
+        "source": "https://github.com/jobmetric/env-modifier"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/majidmohammadian"
+        }
+    ]
+}
