@@ -2,8 +2,8 @@
 
 namespace JobMetric\EnvModifier;
 
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Foundation\Application;
+use JobMetric\EnvModifier\Exceptions\EnvFileNotFoundException;
 
 class JEnvModifier
 {
@@ -17,21 +17,18 @@ class JEnvModifier
     /**
      * The env file path.
      */
-    private string $envPath;
+    private string $filePath;
 
     /**
      * Create a new EnvModifier instance.
      *
      * @param Application $app
-     *
-     * @return void
-     * @throws BindingResolutionException
      */
     public function __construct(Application $app)
     {
         $this->app = $app;
 
-        $this->envPath = base_path('.env');
+        $this->filePath = base_path('.env');
     }
 
     /**
@@ -39,32 +36,93 @@ class JEnvModifier
      *
      * @param string $path
      *
-     * @return void
+     * @return static
+     * @throws EnvFileNotFoundException
      */
-    public function setPath(string $path): void
+    public function setPath(string $path): static
     {
-        $this->envPath = $path;
+        if (!file_exists($path)) {
+            throw new EnvFileNotFoundException($path);
+        }
+
+        $this->filePath = $path;
+
+        return $this;
     }
 
     /**
-     * set env data
+     * get single env data
+     *
+     * @param string $key
+     *
+     * @return string
+     * @throws EnvFileNotFoundException
+     */
+    private function getKey(string $key): string
+    {
+        $contentFile = $this->getContent();
+
+        preg_match("/^{$key}=(.*)$/m", $contentFile, $matches);
+
+        return trim($matches[1] ?? '');
+    }
+
+    /**
+     * get data in env data
+     *
+     * @param $keys
+     *
+     * @return array
+     */
+    public function get(...$keys): array
+    {
+        $data = [];
+        foreach ($keys as $key) {
+            $data = array_merge($data, collect($key)->flatMap(function ($item) {
+                return [$item => $this->getKey($item)];
+            })->toArray());
+        }
+
+        return $data;
+    }
+
+    /**
+     * set single env data
      *
      * @param string $key
      * @param mixed $value
      *
      * @return void
+     * @throws EnvFileNotFoundException
      */
-    public function set(string $key, mixed $value): void
+    private function setKey(string $key, mixed $value): void
     {
-        $envFile = file_get_contents($this->envPath);
+        $contentFile = $this->getContent();
 
-        if (preg_match("/\n${key}=.*$/", $envFile)) {
-            $envFile = preg_replace("/\n${key}=.*$/", "\n${key}=${value}", $envFile);
+        if (preg_match("/^{$key}=/m", $contentFile)) {
+            $contentFile = preg_replace("/^{$key}=.*/m", "{$key}={$value}", $contentFile);
         } else {
-            $envFile .= "\n${key}=${value}";
+            $contentFile .= PHP_EOL . "{$key}={$value}";
         }
 
-        file_put_contents($this->envPath, $envFile);
+        file_put_contents($this->filePath, $contentFile);
+    }
+
+    /**
+     * set list of data in env data
+     *
+     * @param array $data
+     *
+     * @return static
+     * @throws EnvFileNotFoundException
+     */
+    public function set(array $data): static
+    {
+        collect($data)->each(function ($value, $key) {
+            $this->setKey($key, $value);
+        });
+
+        return $this;
     }
 
     /**
@@ -73,11 +131,63 @@ class JEnvModifier
      * @param string $key
      *
      * @return void
+     * @throws EnvFileNotFoundException
      */
-    public function delete(string $key): void
+    private function deleteKey(string $key): void
     {
-        $envFile = file_get_contents($this->envPath);
-        $envFile = preg_replace("/\n${key}=.*$/", '', $envFile);
-        file_put_contents($this->envPath, $envFile);
+        $contentFile = $this->getContent();
+
+        $contentFile = preg_replace("/^{$key}=.*/m", '', $contentFile);
+
+        file_put_contents($this->filePath, $contentFile);
+    }
+
+    /**
+     * get list of data in env data
+     *
+     * @param $keys
+     *
+     * @return static
+     * @throws EnvFileNotFoundException
+     */
+    public function delete(...$keys): static
+    {
+        foreach ($keys as $key) {
+            collect($key)->each(function ($item) {
+                $this->deleteKey($item);
+            });
+        }
+
+        return $this;
+    }
+
+    /**
+     * has key in env data
+     *
+     * @param string $key
+     *
+     * @return bool
+     * @throws EnvFileNotFoundException
+     */
+    public function has(string $key): bool
+    {
+        $contentFile = $this->getContent();
+
+        return preg_match("/^{$key}=(.*)$/m", $contentFile);
+    }
+
+    /**
+     * get env content
+     *
+     * @return string
+     * @throws EnvFileNotFoundException
+     */
+    private function getContent(): string
+    {
+        if (!file_exists($this->filePath)) {
+            throw new EnvFileNotFoundException($this->filePath);
+        }
+
+        return file_get_contents($this->filePath);
     }
 }

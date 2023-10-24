@@ -2,13 +2,14 @@
 
 namespace JobMetric\EnvModifier\Facades;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static mixed get(Model $model, string $key = null, string $locale = null)
- * @method static void store(Model $model, array $data = [])
- * @method static void delete(Model $model, string $locale = null)
+ * @method static static setPath(string $path)
+ * @method static array get(...$keys)
+ * @method static static set(array $data)
+ * @method static static delete(...$keys)
+ * @method static bool has($key)
  *
  * @see \JobMetric\EnvModifier\JEnvModifier
  */
