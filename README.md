@@ -6,7 +6,7 @@ This is a package for env modification the contents of different Laravel project
 
 Run the following command to pull in the latest version:
 ```bash
-composer require jobmetric/env-modifier
+composer require jobmetric/laravel-env-modifier
 ```
 
 ## Documentation
