@@ -5,7 +5,7 @@ namespace JobMetric\EnvModifier;
 use Illuminate\Contracts\Foundation\Application;
 use JobMetric\EnvModifier\Exceptions\EnvFileNotFoundException;
 
-class JEnvModifier
+class EnvModifier
 {
     /**
      * The application instance.
