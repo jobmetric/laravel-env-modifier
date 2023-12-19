@@ -2,14 +2,21 @@
 
 namespace JobMetric\EnvModifier;
 
-use Illuminate\Support\ServiceProvider;
+use JobMetric\PackageCore\Exceptions\RegisterClassTypeNotFoundException;
+use JobMetric\PackageCore\PackageCore;
+use JobMetric\PackageCore\PackageCoreServiceProvider;
 
-class EnvModifierServiceProvider extends ServiceProvider
+class EnvModifierServiceProvider extends PackageCoreServiceProvider
 {
-    public function register()
+    /**
+     * @param PackageCore $package
+     *
+     * @return void
+     * @throws RegisterClassTypeNotFoundException
+     */
+    public function configuration(PackageCore $package): void
     {
-        $this->app->bind('JEnvModifier', function ($app) {
-            return new JEnvModifier($app);
-        });
+        $package->name('laravel-env-modifier')
+            ->registerClass('EnvModifier', EnvModifier::class);
     }
 }

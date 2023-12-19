@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Facade;
  * @method static static delete(...$keys)
  * @method static bool has($key)
  *
- * @see \JobMetric\EnvModifier\JEnvModifier
+ * @see \JobMetric\EnvModifier\EnvModifier
  */
-class JEnvModifier extends Facade
+class EnvModifier extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -22,6 +22,6 @@ class JEnvModifier extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'JEnvModifier';
+        return 'EnvModifier';
     }
 }

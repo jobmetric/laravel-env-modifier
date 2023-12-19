@@ -1,18 +1,19 @@
 <?php
 
-use JobMetric\EnvModifier\JEnvModifier;
+use JobMetric\EnvModifier\EnvModifier;
+use JobMetric\EnvModifier\Exceptions\EnvFileNotFoundException;
 
 if(!function_exists('env_modifier_set')) {
     /**
      * set env data
      *
-     * @param string $key
-     * @param mixed $value
+     * @param array $data
      *
      * @return void
+     * @throws EnvFileNotFoundException
      */
-    function env_modifier_set(string $key, mixed $value): void
+    function env_modifier_set(array $data): void
     {
-        JEnvModifier::set($key, $value);
+        EnvModifier::set($data);
     }
 }
