@@ -22,9 +22,8 @@
     ],
     "require": {
         "php": ">=8.0.1",
-        "ext-json": "*",
         "laravel/framework": ">=9.19",
-        "jobmetric/laravel-package-core": "^1.0"
+        "jobmetric/laravel-package-core": "^1.26"
     },
     "autoload": {
         "files": [
@@ -40,7 +39,7 @@
                 "JobMetric\\EnvModifier\\EnvModifierServiceProvider"
             ],
             "aliases": {
-                "EnvModifier": "EnvModifier"
+                "EnvModifier": "JobMetric\\EnvModifier\\Facades\\EnvModifier"
             }
         }
     },
