@@ -2,6 +2,7 @@
 
 namespace JobMetric\EnvModifier;
 
+use JobMetric\PackageCore\Enums\RegisterClassTypeEnum;
 use JobMetric\PackageCore\Exceptions\RegisterClassTypeNotFoundException;
 use JobMetric\PackageCore\PackageCore;
 use JobMetric\PackageCore\PackageCoreServiceProvider;
@@ -17,6 +18,6 @@ class EnvModifierServiceProvider extends PackageCoreServiceProvider
     public function configuration(PackageCore $package): void
     {
         $package->name('laravel-env-modifier')
-            ->registerClass('EnvModifier', EnvModifier::class);
+            ->registerClass('EnvModifier', EnvModifier::class, RegisterClassTypeEnum::SINGLETON());
     }
 }
