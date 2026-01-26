@@ -1,0 +1,16 @@
+{
+    "runner": {
+        "enabled": true
+    },
+    "dependency-packages": [
+        "jobmetric/laravel-package-core"
+    ],
+    "namespace": {
+        "path": "tests",
+        "option": [
+            "--testdox"
+        ],
+        "filter": null
+    }
+}
+
