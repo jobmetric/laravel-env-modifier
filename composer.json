@@ -33,6 +33,11 @@
             "JobMetric\\EnvModifier\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "JobMetric\\EnvModifier\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
