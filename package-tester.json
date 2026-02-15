@@ -1,6 +1,6 @@
 {
     "runner": {
-        "enabled": false
+        "enabled": true
     },
     "dependency-packages": [
         "jobmetric/laravel-package-core"
