@@ -1,4 +1,4 @@
-[contributors-shield]: https://img.shields.io/github/contributors/jobmetric/laravel-env-modifier.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/jobmetric/laravel-env-modifier.svg?style=for-the-badge###
 [contributors-url]: https://github.com/jobmetric/laravel-env-modifier/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/jobmetric/laravel-env-modifier.svg?style=for-the-badge&label=Fork
 [forks-url]: https://github.com/jobmetric/laravel-env-modifier/network/members
