@@ -1,0 +1,20 @@
+name: Tests
+
+on:
+  pull_request:
+    types:
+      - opened
+
+
+jobs:
+  tests:
+    uses: jobmetric/laravel-package-tester/.github/workflows/tester.yml@master
+    with:
+      package-name: jobmetric/laravel-env-modifier
+      date_format: jalali
+      calendar_type: jalali
+      timezone: Asia/Tehran
+    secrets:
+      bot_token: ${{ secrets.TELEGRAM_NOTIFICATION_BOT_TOKEN }}
+      chat_id: ${{ secrets.TELEGRAM_NOTIFICATION_CHAT_ID }}
+
