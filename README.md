@@ -7,7 +7,7 @@
 [license-shield]: https://img.shields.io/github/license/jobmetric/laravel-env-modifier.svg?style=for-the-badge
 [license-url]: https://github.com/jobmetric/laravel-env-modifier/blob/master/LICENCE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-blue.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/majidmohammadian
+[linkedin-url]: https://linkedin.com/in/majidmohammadiam@
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
