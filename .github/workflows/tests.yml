@@ -18,4 +18,4 @@ jobs:
       timezone: Asia/Tehran
     secrets:
       bot_token: ${{ secrets.TELEGRAM_NOTIFICATION_BOT_TOKEN }}
-      chat_id: ${{ secrets.TELEGRAM_NOTIFICATION_CHAT_ID }}
+      chat_id: ${{ secrets.TELEGRAM_NOTIFICATION_CHAT_ID_TEST }}
