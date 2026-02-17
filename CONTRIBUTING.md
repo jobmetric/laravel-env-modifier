@@ -36,7 +36,7 @@ If you encounter any bugs, have questions, or want to suggest improvements, plea
 
 We expect all contributors to adhere to our Code of Conduct. Be respectful, inclusive, and considerate of others when participating in this project. Any unacceptable behavior will not be tolerated.
 
-## License
+## License ###
 
 By contributing to Env Modifier, you agree that your contributions will be licensed under the same license as the project (if applicable). Make sure you understand and comply with the licensing terms before submitting your contributions.
 
