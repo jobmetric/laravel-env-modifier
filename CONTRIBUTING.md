@@ -44,4 +44,5 @@ By contributing to Env Modifier, you agree that your contributions will be licen
 
 Contributors play a vital role in the success of this project. Your efforts will be acknowledged in the project's documentation and release notes, and your GitHub profile will be listed as a contributor.
 
-Thank you for your interest in contributing to Env Modifier. Together, we can build an amazing open-source community and make the project even better!
+Thank you for your interest in co
+٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬٬
