@@ -6,13 +6,10 @@ on:
       - opened
 
 jobs:
-  tests:
-    permissions:
-      contents: read
-      pull-requests: write
-    uses: jobmetric/laravel-package-tester/.github/workflows/tester.yml@master
+  test_laravel_9:
+    uses:  jobmetric/laravel-package-tester/.github/workflows/tester.yml
     with:
-      package-name: jobmetric/laravel-env-modifier
+      package_name: jobmetric/laravel-env-modifier
       date_format: jalali
       calendar_type: jalali
       timezone: Asia/Tehran
