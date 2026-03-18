@@ -7,7 +7,7 @@ on:
 
 jobs:
   test_laravel_9:
-    uses:  jobmetric/laravel-package-tester/.github/workflows/tester.yml
+    uses:  jobmetric/laravel-package-tester/.github/workflows/tester.yml@master
     with:
       package_name: jobmetric/laravel-env-modifier
       date_format: jalali
