@@ -9,7 +9,8 @@
         "package",
         "env",
         "env file",
-        "env modifier"
+        "env modifier",
+        "env edite"
     ],
     "homepage": "https://doc.jobmetric.net/package/laravel-env-modifier",
     "authors": [
